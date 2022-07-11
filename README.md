@@ -2,10 +2,12 @@
 Check Michael's exclusive Lemax items
 
 Crontab:
+```
 */10 * * * * (echo "$(date)"; /home/pi/bin/spookycheck.sh "https://www.michaels.com/lemax-the-future-looks-dark/10692284.html") | tee -a /var/log/spookycheck.log
-#####################################################################################
+```
 
 Script:
+```
 #!/bin/bash
 #set -x
 
@@ -20,9 +22,10 @@ else
         echo -e "IN STOCK\n $URL" | msmtp -a default <email address>
         echo -e "IN STOCK $URL"
 fi
-######################################################################################
+```
 
 msmtp config:
+```
 defaults
 port 587
 tls on
@@ -39,3 +42,4 @@ password <app password for gmail>
 
 # Set a default account
 account default : gmail
+```
